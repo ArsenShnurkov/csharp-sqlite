@@ -38,10 +38,12 @@ namespace Community.CsharpSqlite.SQLiteClient
         {
 
         }
+
         public SqliteSyntaxException(int errcode, string message)
             : base(errcode, message)
         {
         }
+
         public SqliteSyntaxException(string message)
             : base(message)
         {
@@ -57,14 +59,17 @@ namespace Community.CsharpSqlite.SQLiteClient
             : base(0)
         {
         }
+
         public SqliteExecutionException(int errcode)
             : base(errcode)
         {
         }
+
         public SqliteExecutionException(int errcode, string message)
             : base(errcode, message)
         {
         }
+
         public SqliteExecutionException(string message)
             : base(message)
         {
