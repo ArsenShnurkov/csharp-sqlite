@@ -6,7 +6,7 @@ using u8 = System.Byte;
 using u32 = System.UInt32;
 namespace Community.CsharpSqlite
 {
-  public partial class Sqlite3
+  public partial class Globals
   {
     /*
     **

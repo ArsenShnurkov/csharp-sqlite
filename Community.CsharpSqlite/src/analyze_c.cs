@@ -7,9 +7,9 @@ using u8 = System.Byte;
 namespace Community.CsharpSqlite
 {
   using sqlite3_int64 = System.Int64;
-  using sqlite3_stmt = Sqlite3.Vdbe;
+  using sqlite3_stmt = Vdbe;
 
-  public partial class Sqlite3
+  public partial class Globals
   {
 /*
 ** 2005 July 8

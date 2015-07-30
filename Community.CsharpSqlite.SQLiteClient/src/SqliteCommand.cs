@@ -201,23 +201,23 @@ namespace Community.CsharpSqlite.SQLiteClient
         internal int NumChanges()
         {
             //if (parent_conn.Version == 3)
-            return Sqlite3.sqlite3_changes(parent_conn.Handle2);
+            return Globals.sqlite3_changes(parent_conn.Handle2);
             //else
             //	return Sqlite.sqlite_changes(parent_conn.Handle);
         }
 
-        private void BindParameters3(Sqlite3.Vdbe pStmt)
+        private void BindParameters3(Globals.Vdbe pStmt)
         {
             if (sql_params == null)
                 return;
             if (sql_params.Count == 0)
                 return;
 
-            int pcount = Sqlite3.sqlite3_bind_parameter_count(pStmt);
+            int pcount = Globals.sqlite3_bind_parameter_count(pStmt);
 
             for (int i = 1; i <= pcount; i++)
             {
-                String name = Sqlite3.sqlite3_bind_parameter_name(pStmt, i);
+                String name = Globals.sqlite3_bind_parameter_name(pStmt, i);
 
                 SqliteParameter param = null;
                 if (!String.IsNullOrEmpty(name))
@@ -227,7 +227,7 @@ namespace Community.CsharpSqlite.SQLiteClient
 
                 if (param.Value == null)
                 {
-                    Sqlite3.sqlite3_bind_null(pStmt, i);
+                    Globals.sqlite3_bind_null(pStmt, i);
                     continue;
                 }
 
@@ -244,28 +244,28 @@ namespace Community.CsharpSqlite.SQLiteClient
                 if (ptype.Equals(typeof(String)))
                 {
                     String s = (String)param.Value;
-                    err = (SqliteError)Sqlite3.sqlite3_bind_text(pStmt, i, s, -1, null);
+                    err = (SqliteError)Globals.sqlite3_bind_text(pStmt, i, s, -1, null);
                 }
                 else
                 if (ptype.Equals(typeof(DBNull)))
                 {
-                    err = (SqliteError)Sqlite3.sqlite3_bind_null(pStmt, i);
+                    err = (SqliteError)Globals.sqlite3_bind_null(pStmt, i);
                 }
                 else
                 if (ptype.Equals(typeof(Boolean)))
                 {
                     bool b = (bool)param.Value;
-                    err = (SqliteError)Sqlite3.sqlite3_bind_int(pStmt, i, b ? 1 : 0);
+                    err = (SqliteError)Globals.sqlite3_bind_int(pStmt, i, b ? 1 : 0);
                 }
                 else
                 if (ptype.Equals(typeof(Byte)))
                 {
-                    err = (SqliteError)Sqlite3.sqlite3_bind_int(pStmt, i, (Byte)param.Value);
+                    err = (SqliteError)Globals.sqlite3_bind_int(pStmt, i, (Byte)param.Value);
                 }
                 else
                 if (ptype.Equals(typeof(Char)))
                 {
-                    err = (SqliteError)Sqlite3.sqlite3_bind_int(pStmt, i, (Char)param.Value);
+                    err = (SqliteError)Globals.sqlite3_bind_int(pStmt, i, (Char)param.Value);
 #if (SQLITE_WINRT)
                 } else if (ptype.GetTypeInfo().IsEnum)
 #else
@@ -274,69 +274,69 @@ namespace Community.CsharpSqlite.SQLiteClient
                 if (ptype.IsEnum)
 #endif
 				{
-                    err = (SqliteError)Sqlite3.sqlite3_bind_int(pStmt, i, (Int32)param.Value);
+                    err = (SqliteError)Globals.sqlite3_bind_int(pStmt, i, (Int32)param.Value);
                 }
                 else
                 if (ptype.Equals(typeof(Int16)))
                 {
-                    err = (SqliteError)Sqlite3.sqlite3_bind_int(pStmt, i, (Int16)param.Value);
+                    err = (SqliteError)Globals.sqlite3_bind_int(pStmt, i, (Int16)param.Value);
                 }
                 else
                 if (ptype.Equals(typeof(Int32)))
                 {
-                    err = (SqliteError)Sqlite3.sqlite3_bind_int(pStmt, i, (Int32)param.Value);
+                    err = (SqliteError)Globals.sqlite3_bind_int(pStmt, i, (Int32)param.Value);
                 }
                 else
                 if (ptype.Equals(typeof(SByte)))
                 {
-                    err = (SqliteError)Sqlite3.sqlite3_bind_int(pStmt, i, (SByte)param.Value);
+                    err = (SqliteError)Globals.sqlite3_bind_int(pStmt, i, (SByte)param.Value);
                 }
                 else
                 if (ptype.Equals(typeof(UInt16)))
                 {
-                    err = (SqliteError)Sqlite3.sqlite3_bind_int(pStmt, i, (UInt16)param.Value);
+                    err = (SqliteError)Globals.sqlite3_bind_int(pStmt, i, (UInt16)param.Value);
                 }
                 else
                 if (ptype.Equals(typeof(DateTime)))
                 {
                     DateTime dt = (DateTime)param.Value;
-                    err = (SqliteError)Sqlite3.sqlite3_bind_text(pStmt, i, dt.ToString("yyyy-MM-dd HH:mm:ss.fff"), -1, null);
+                    err = (SqliteError)Globals.sqlite3_bind_text(pStmt, i, dt.ToString("yyyy-MM-dd HH:mm:ss.fff"), -1, null);
                 }
                 else
                 if (ptype.Equals(typeof(Decimal)))
                 {
                     string val = ((Decimal)param.Value).ToString(CultureInfo.InvariantCulture);
-                    err = (SqliteError)Sqlite3.sqlite3_bind_text(pStmt, i, val, val.Length, null);
+                    err = (SqliteError)Globals.sqlite3_bind_text(pStmt, i, val, val.Length, null);
                 }
                 else
                 if (ptype.Equals(typeof(Double)))
                 {
-                    err = (SqliteError)Sqlite3.sqlite3_bind_double(pStmt, i, (Double)param.Value);
+                    err = (SqliteError)Globals.sqlite3_bind_double(pStmt, i, (Double)param.Value);
                 }
                 else
                 if (ptype.Equals(typeof(Single)))
                 {
-                    err = (SqliteError)Sqlite3.sqlite3_bind_double(pStmt, i, (Single)param.Value);
+                    err = (SqliteError)Globals.sqlite3_bind_double(pStmt, i, (Single)param.Value);
                 }
                 else
                 if (ptype.Equals(typeof(UInt32)))
                 {
-                    err = (SqliteError)Sqlite3.sqlite3_bind_int64(pStmt, i, (UInt32)param.Value);
+                    err = (SqliteError)Globals.sqlite3_bind_int64(pStmt, i, (UInt32)param.Value);
                 }
                 else
                 if (ptype.Equals(typeof(Int64)))
                 {
-                    err = (SqliteError)Sqlite3.sqlite3_bind_int64(pStmt, i, (Int64)param.Value);
+                    err = (SqliteError)Globals.sqlite3_bind_int64(pStmt, i, (Int64)param.Value);
                 }
                 else
                 if (ptype.Equals(typeof(Byte[])))
                 {
-                    err = (SqliteError)Sqlite3.sqlite3_bind_blob(pStmt, i, (byte[])param.Value, ((byte[])param.Value).Length, null);
+                    err = (SqliteError)Globals.sqlite3_bind_blob(pStmt, i, (byte[])param.Value, ((byte[])param.Value).Length, null);
                 }
                 else
                 if (ptype.Equals(typeof(Guid)))
                 {
-                    err = (SqliteError)Sqlite3.sqlite3_bind_text(pStmt, i, param.Value.ToString(), param.Value.ToString().Length, null);
+                    err = (SqliteError)Globals.sqlite3_bind_text(pStmt, i, param.Value.ToString(), param.Value.ToString().Length, null);
                 }
                 else
                 {
@@ -349,16 +349,16 @@ namespace Community.CsharpSqlite.SQLiteClient
             }
         }
 
-        private void GetNextStatement(string pzStart, ref string pzTail, ref Sqlite3.Vdbe pStmt)
+        private void GetNextStatement(string pzStart, ref string pzTail, ref Globals.Vdbe pStmt)
         {
             ////UTF8Encoding encoding = new UTF8Encoding();
-            SqliteError err = (SqliteError)Sqlite3.sqlite3_prepare_v2(parent_conn.Handle2, pzStart, pzStart.Length, ref pStmt, ref pzTail);
+            SqliteError err = (SqliteError)Globals.sqlite3_prepare_v2(parent_conn.Handle2, pzStart, pzStart.Length, ref pStmt, ref pzTail);
             if (err != SqliteError.OK)
                 throw new SqliteSyntaxException(parent_conn.Handle2.errCode, GetError3());
         }
 
         // Executes a statement and ignores its result.
-        private void ExecuteStatement(Sqlite3.Vdbe pStmt)
+        private void ExecuteStatement(Globals.Vdbe pStmt)
         {
             int cols;
             IntPtr pazValue, pazColName;
@@ -366,20 +366,20 @@ namespace Community.CsharpSqlite.SQLiteClient
         }
 
         // Executes a statement and returns whether there is more data available.
-        internal bool ExecuteStatement(Sqlite3.Vdbe pStmt, out int cols, out IntPtr pazValue, out IntPtr pazColName)
+        internal bool ExecuteStatement(Globals.Vdbe pStmt, out int cols, out IntPtr pazValue, out IntPtr pazColName)
         {
             SqliteError err;
 
             //if (parent_conn.Version == 3) 
             //{
-            err = (SqliteError)Sqlite3.sqlite3_step(pStmt);
+            err = (SqliteError)Globals.sqlite3_step(pStmt);
 
             if (err == SqliteError.ERROR)
                 throw new SqliteExecutionException(parent_conn.Handle2.errCode, GetError3() + "\n" + pStmt.zErrMsg);
 
             pazValue = IntPtr.Zero;
             pazColName = IntPtr.Zero; // not used for v=3
-            cols = Sqlite3.sqlite3_column_count(pStmt);
+            cols = Globals.sqlite3_column_count(pStmt);
 
             /*
 			}
@@ -508,7 +508,7 @@ namespace Community.CsharpSqlite.SQLiteClient
             {
                 while (true)
                 {
-                    Sqlite3.Vdbe pStmt = null;
+                    Globals.Vdbe pStmt = null;
 
                     queryval = pzTail;
                     GetNextStatement(queryval, ref pzTail, ref pStmt);
@@ -538,7 +538,7 @@ namespace Community.CsharpSqlite.SQLiteClient
                     finally
                     {
                         //if (parent_conn.Version == 3) 
-                        Sqlite3.sqlite3_finalize(pStmt);
+                        Globals.sqlite3_finalize(pStmt);
                         //else
                         //	Sqlite.sqlite_finalize (pStmt, out errMsgPtr);
                     }
@@ -569,12 +569,12 @@ namespace Community.CsharpSqlite.SQLiteClient
 
         public string GetLastError()
         {
-            return Sqlite3.sqlite3_errmsg(parent_conn.Handle2);
+            return Globals.sqlite3_errmsg(parent_conn.Handle2);
         }
 
         private string GetError3()
         {
-            return Sqlite3.sqlite3_errmsg(parent_conn.Handle2);
+            return Globals.sqlite3_errmsg(parent_conn.Handle2);
             //return Marshal.PtrToStringUni (Sqlite.sqlite3_errmsg16 (parent_conn.Handle));
         }
 

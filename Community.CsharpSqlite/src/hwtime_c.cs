@@ -2,7 +2,7 @@ namespace Community.CsharpSqlite
 {
   using sqlite_u3264 = System.UInt64;
 
-  public partial class Sqlite3
+  public partial class Globals
   {
     /*
     ** 2008 May 27

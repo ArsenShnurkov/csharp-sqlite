@@ -50,7 +50,7 @@ namespace Community.CsharpSqlite.SQLiteClient
         private int db_version;
         private string db_password;
         private IntPtr sqlite_handle;
-        private Sqlite3.sqlite3 sqlite_handle2;
+        private Globals.sqlite3 sqlite_handle2;
         private ConnectionState state;
         private Encoding encoding;
         private int busy_timeout;
@@ -131,10 +131,10 @@ namespace Community.CsharpSqlite.SQLiteClient
 
         public override string ServerVersion
         {
-            get { return Sqlite3.sqlite3_libversion(); }
+            get { return Globals.sqlite3_libversion(); }
         }
 
-        internal Sqlite3.sqlite3 Handle2
+        internal Globals.sqlite3 Handle2
         {
             get { return sqlite_handle2; }
         }
@@ -154,7 +154,7 @@ namespace Community.CsharpSqlite.SQLiteClient
             get
             {
                 //if (Version == 3)
-                return (int)Sqlite3.sqlite3_last_insert_rowid(Handle2);
+                return (int)Globals.sqlite3_last_insert_rowid(Handle2);
                 //return (int)Sqlite.sqlite3_last_insert_rowid (Handle);
                 //else
                 //	return Sqlite.sqlite_last_insert_rowid (Handle);
@@ -346,7 +346,7 @@ namespace Community.CsharpSqlite.SQLiteClient
 		
             if (Version == 3)
 				//Sqlite3.sqlite3_close()
-				Sqlite3.sqlite3_close(sqlite_handle2);
+				Globals.sqlite3_close(sqlite_handle2);
             //else 
             //Sqlite.sqlite_close (sqlite_handle);
             sqlite_handle = IntPtr.Zero;
@@ -399,14 +399,14 @@ namespace Community.CsharpSqlite.SQLiteClient
             if (Version == 3)
             {
                 sqlite_handle = (IntPtr)1;
-                int flags = Sqlite3.SQLITE_OPEN_NOMUTEX | Sqlite3.SQLITE_OPEN_READWRITE | Sqlite3.SQLITE_OPEN_CREATE;
-                int err = Sqlite3.sqlite3_open_v2(db_file, out sqlite_handle2, flags, null);
+                int flags = Globals.SQLITE_OPEN_NOMUTEX | Globals.SQLITE_OPEN_READWRITE | Globals.SQLITE_OPEN_CREATE;
+                int err = Globals.sqlite3_open_v2(db_file, out sqlite_handle2, flags, null);
                 //int err = Sqlite.sqlite3_open16(db_file, out sqlite_handle);
                 if (err == (int)SqliteError.ERROR)
-                    throw new ApplicationException(Sqlite3.sqlite3_errmsg(sqlite_handle2));
+                    throw new ApplicationException(Globals.sqlite3_errmsg(sqlite_handle2));
                 //throw new ApplicationException (Marshal.PtrToStringUni( Sqlite.sqlite3_errmsg16 (sqlite_handle)));
                 if (busy_timeout != 0)
-                    Sqlite3.sqlite3_busy_timeout(sqlite_handle2, busy_timeout);
+                    Globals.sqlite3_busy_timeout(sqlite_handle2, busy_timeout);
                 //Sqlite.sqlite3_busy_timeout (sqlite_handle, busy_timeout);
                 if (!String.IsNullOrEmpty(db_password))
                 {

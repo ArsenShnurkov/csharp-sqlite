@@ -3,7 +3,7 @@ using System;
 
 namespace Community.CsharpSqlite
 {
-  public partial class Sqlite3
+  public partial class Globals
   {
     /***** This file contains automatically generated code ******
     **

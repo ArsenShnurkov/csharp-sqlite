@@ -1,6 +1,6 @@
 namespace Community.CsharpSqlite
 {
-  public partial class Sqlite3
+  public partial class Globals
   {
     /*
     ** 2007 May 7

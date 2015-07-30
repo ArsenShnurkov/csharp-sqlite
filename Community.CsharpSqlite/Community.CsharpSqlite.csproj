@@ -3,22 +3,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F1653F20-D47D-4F29-8C55-3C835542AF5F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Community.CsharpSqlite</RootNamespace>
     <AssemblyName>Community.CsharpSqlite</AssemblyName>
-    <StartupObject>
-    </StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -34,6 +28,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,6 +41,8 @@
     <NoWarn>0168 ; 0169; 0414; 0618; 0649</NoWarn>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -57,6 +54,8 @@
     <PlatformTarget>x86</PlatformTarget>
     <NoWarn>0168 ; 0169; 0414; 0618; 0649</NoWarn>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -67,6 +66,8 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -77,15 +78,14 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Management" />
-    <Reference Include="System.XML" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\alter_c.cs">
@@ -102,26 +102,17 @@
     </Compile>
     <Compile Include="src\btmutex_c.cs">
     </Compile>
-    <Compile Include="src\BtreeInt_h.cs">
-    </Compile>
-    <Compile Include="src\btree_c.cs">
-    </Compile>
-    <Compile Include="src\Btree_h.cs">
-    </Compile>
     <Compile Include="src\build_c.cs">
     </Compile>
     <Compile Include="src\callback_c.cs">
     </Compile>
     <Compile Include="src\complete_c.cs">
     </Compile>
-    <Compile Include="src\crypto.cs" />
     <Compile Include="src\ctime_c.cs" />
     <Compile Include="src\date_c.cs">
     </Compile>
     <Compile Include="src\Delegates.cs" />
     <Compile Include="src\delete_c.cs">
-    </Compile>
-    <Compile Include="src\expr_c.cs">
     </Compile>
     <Compile Include="src\fault_c.cs">
     </Compile>
@@ -138,8 +129,6 @@
     </Compile>
     <Compile Include="src\insert_c.cs">
     </Compile>
-    <Compile Include="src\journal_c.cs">
-    </Compile>
     <Compile Include="src\keywordhash_h.cs">
     </Compile>
     <Compile Include="src\legacy_c.cs">
@@ -148,24 +137,10 @@
     </Compile>
     <Compile Include="src\main_c.cs">
     </Compile>
-    <Compile Include="src\malloc_c.cs">
-    </Compile>
     <Compile Include="src\memjournal_c.cs">
     </Compile>
     <Compile Include="src\mem_Pool.cs" />
-    <Compile Include="src\mutex_c.cs">
-    </Compile>
-    <Compile Include="src\mutex_h.cs">
-    </Compile>
-    <Compile Include="src\mutex_noop_c.cs">
-    </Compile>
-    <Compile Include="src\mutex_w32.cs">
-    </Compile>
     <Compile Include="src\notify_c.cs">
-    </Compile>
-    <Compile Include="src\opcodes_c.cs">
-    </Compile>
-    <Compile Include="src\opcodes_h.cs">
     </Compile>
     <Compile Include="src\os_c.cs">
     </Compile>
@@ -175,31 +150,9 @@
     </Compile>
     <Compile Include="src\os_win_c.cs">
     </Compile>
-    <Compile Include="src\pager_c.cs">
-    </Compile>
-    <Compile Include="src\pager_h.cs">
-    </Compile>
-    <Compile Include="src\parse_c.cs">
-    </Compile>
-    <Compile Include="src\parse_h.cs">
-    </Compile>
-    <Compile Include="src\pcache1_c.cs">
-    </Compile>
-    <Compile Include="src\pcache_c.cs">
-    </Compile>
-    <Compile Include="src\pcache_h.cs">
-    </Compile>
     <Compile Include="src\pragma_c.cs">
     </Compile>
-    <Compile Include="src\prepare_c.cs">
-    </Compile>
-    <Compile Include="src\printf_c.cs">
-    </Compile>
-    <Compile Include="src\random_c.cs">
-    </Compile>
     <Compile Include="src\resolve_c.cs">
-    </Compile>
-    <Compile Include="src\rowset_c.cs">
     </Compile>
     <Compile Include="src\select_c.cs">
     </Compile>
@@ -211,46 +164,138 @@
     </Compile>
     <Compile Include="src\status_c.cs">
     </Compile>
-    <Compile Include="src\table_c.cs">
-    </Compile>
-    <Compile Include="src\tokenize_c.cs">
-    </Compile>
     <Compile Include="src\trigger_c.cs">
     </Compile>
     <Compile Include="src\update_c.cs">
     </Compile>
-    <Compile Include="src\utf_c.cs">
-    </Compile>
-    <Compile Include="src\util_c.cs">
-    </Compile>
     <Compile Include="src\vacuum_c.cs">
     </Compile>
-    <Compile Include="src\vdbeapi_c.cs">
-    </Compile>
-    <Compile Include="src\vdbeaux_c.cs">
-    </Compile>
-    <Compile Include="src\vdbeblob_c.cs">
-    </Compile>
-    <Compile Include="src\VdbeInt_h.cs">
-    </Compile>
-    <Compile Include="src\vdbemem_c.cs">
-    </Compile>
-    <Compile Include="src\vdbetrace_c.cs" />
-    <Compile Include="src\vdbe_c.cs">
-    </Compile>
-    <Compile Include="src\Vdbe_h.cs">
-    </Compile>
     <Compile Include="src\vtab_c.cs">
-    </Compile>
-    <Compile Include="src\walker_c.cs">
-    </Compile>
-    <Compile Include="src\wal_c.cs" />
-    <Compile Include="src\wal_h.cs" />
-    <Compile Include="src\where_c.cs">
     </Compile>
     <Compile Include="src\_Custom.cs">
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\parsing\where_c.cs" />
+    <Compile Include="src\parsing\WhereTerm.cs" />
+    <Compile Include="src\parsing\BusyHandler.cs" />
+    <Compile Include="src\parsing\ExprSpan.cs" />
+    <Compile Include="src\parsing\ExprList.cs" />
+    <Compile Include="src\parsing\Expr.cs" />
+    <Compile Include="src\parsing\WhereClause.cs" />
+    <Compile Include="src\parsing\WhereOrInfo.cs" />
+    <Compile Include="src\parsing\WhereAndInfo.cs" />
+    <Compile Include="src\parsing\WhereMaskSet.cs" />
+    <Compile Include="src\parsing\WhereCost.cs" />
+    <Compile Include="src\parsing\Select.cs" />
+    <Compile Include="src\parsing\CollSeq.cs" />
+    <Compile Include="src\parsing\AggInfo.cs" />
+    <Compile Include="src\parsing\Parse.cs" />
+    <Compile Include="src\parsing\WherePlan.cs" />
+    <Compile Include="src\parsing\SrcList.cs" />
+    <Compile Include="src\parsing\IdList.cs" />
+    <Compile Include="src\engine_scheme\Table.cs" />
+    <Compile Include="src\engine_scheme\Column.cs" />
+    <Compile Include="src\engine_scheme\FKey.cs" />
+    <Compile Include="src\engine_scheme\VTable.cs" />
+    <Compile Include="src\engine_scheme\Schema.cs" />
+    <Compile Include="src\engine_core\Mem.cs" />
+    <Compile Include="src\engine_sessions\sqlite3.cs" />
+    <Compile Include="src\engine_sessions\sqlite3_context.cs" />
+    <Compile Include="src\engine_core\AutoincInfo.cs" />
+    <Compile Include="src\parsing\Token.cs" />
+    <Compile Include="src\engine_vdbe\Trigger.cs" />
+    <Compile Include="src\engine_vdbe\Vdbe.cs" />
+    <Compile Include="src\engine_vdbe\TriggerPrg.cs" />
+    <Compile Include="src\engine_vdbe\TriggerStep.cs" />
+    <Compile Include="src\engine_vdbe\VdbeOp.cs" />
+    <Compile Include="src\engine_vdbe\VdbeFunc.cs" />
+    <Compile Include="src\engine_vdbe\FuncDef.cs" />
+    <Compile Include="src\engine_vdbe\FuncDestructor.cs" />
+    <Compile Include="src\engine_vdbe\SubProgram.cs" />
+    <Compile Include="src\engine_core\sqlite3_index_info.cs" />
+    <Compile Include="src\engine_core\IndexSample.cs" />
+    <Compile Include="src\engine_core\Index.cs" />
+    <Compile Include="src\engine_vdbe\Module.cs" />
+    <Compile Include="src\engine_vdbe\sqlite3_module.cs" />
+    <Compile Include="src\engine_vdbe\sqlite3_vtab.cs" />
+    <Compile Include="src\engine_basis\Hash.cs" />
+    <Compile Include="src\engine_basis\RowSet.cs" />
+    <Compile Include="src\engine_basis\RowSetChunk.cs" />
+    <Compile Include="src\engine_basis\RowSetEntry.cs" />
+    <Compile Include="src\engine_core\Btree.cs" />
+    <Compile Include="src\engine_core\BtShared.cs" />
+    <Compile Include="src\parsing\NameContext.cs" />
+    <Compile Include="src\engine_basis\encryption\codec_ctx.cs" />
+    <Compile Include="src\engine_basis\encryption\chipher_ctx.cs" />
+    <Compile Include="src\engine_sessions\sqlite3_vtab_cursor.cs" />
+    <Compile Include="src\engine_vdbe\sqlite3_api_routines.cs" />
+    <Compile Include="src\engine_basis\sync\mutex.cs" />
+    <Compile Include="src\engine_basis\sync\mutex_c.cs" />
+    <Compile Include="src\engine_basis\sync\mutex_h.cs" />
+    <Compile Include="src\parsing\Walker.cs" />
+    <Compile Include="src\engine_vdbe\VdbeCursor.cs" />
+    <Compile Include="src\engine_vdbe\SumCtx.cs" />
+    <Compile Include="src\storage_backend\sqlite3_vfs.cs" />
+    <Compile Include="src\storage_backend\PgHdr.cs" />
+    <Compile Include="src\storage_backend\MemPage.cs" />
+    <Compile Include="src\storage_backend\Pager.cs" />
+    <Compile Include="src\storage_backend\sqlite3_file.cs" />
+    <Compile Include="src\engine_vdbe\StrAccum.cs" />
+    <Compile Include="src\engine_vdbe\VdbeFrame.cs" />
+    <Compile Include="src\storage_backend\Db.cs" />
+    <Compile Include="src\storage_backend\Savepoint.cs" />
+    <Compile Include="src\engine_basis\Lookaside.cs" />
+    <Compile Include="src\engine_basis\libc.cs" />
+    <Compile Include="src\engine_vdbe\opcodes_c.cs" />
+    <Compile Include="src\engine_vdbe\opcodes_h.cs" />
+    <Compile Include="src\engine_core\btree_c.cs" />
+    <Compile Include="src\engine_core\Btree_h.cs" />
+    <Compile Include="src\engine_core\BtreeInt_h.cs" />
+    <Compile Include="src\parsing\parse_c.cs" />
+    <Compile Include="src\parsing\parse_h.cs" />
+    <Compile Include="src\engine_basis\malloc_c.cs" />
+    <Compile Include="src\engine_vdbe\vdbe_c.cs" />
+    <Compile Include="src\engine_vdbe\Vdbe_h.cs" />
+    <Compile Include="src\engine_vdbe\vdbeapi_c.cs" />
+    <Compile Include="src\engine_vdbe\vdbeaux_c.cs" />
+    <Compile Include="src\engine_vdbe\vdbeblob_c.cs" />
+    <Compile Include="src\engine_vdbe\VdbeInt_h.cs" />
+    <Compile Include="src\engine_basis\encryption\crypto.cs" />
+    <Compile Include="src\engine_scheme\table_c.cs" />
+    <Compile Include="src\parsing\tokenize_c.cs" />
+    <Compile Include="src\engine_basis\printf_c.cs" />
+    <Compile Include="src\parsing\walker_c.cs" />
+    <Compile Include="src\storage_backend\pager_c.cs" />
+    <Compile Include="src\storage_backend\pager_h.cs" />
+    <Compile Include="src\storage_backend\pcache_c.cs" />
+    <Compile Include="src\storage_backend\pcache_h.cs" />
+    <Compile Include="src\storage_backend\pcache1_c.cs" />
+    <Compile Include="src\engine_basis\sync\mutex_noop_c.cs" />
+    <Compile Include="src\engine_basis\sync\mutex_w32.cs" />
+    <Compile Include="src\storage_backend\wal_c.cs" />
+    <Compile Include="src\storage_backend\wal_h.cs" />
+    <Compile Include="src\engine_basis\vdbemem_c.cs" />
+    <Compile Include="src\engine_basis\vdbetrace_c.cs" />
+    <Compile Include="src\engine_basis\utf_c.cs" />
+    <Compile Include="src\engine_basis\util_c.cs" />
+    <Compile Include="src\storage_backend\prepare_c.cs" />
+    <Compile Include="src\storage_backend\journal_c.cs" />
+    <Compile Include="src\engine_basis\encryption\random_c.cs" />
+    <Compile Include="src\engine_basis\rowset_c.cs" />
+    <Compile Include="src\VtabCtx.cs" />
+    <Compile Include="src\engine_vdbe\FuncDefHash.cs" />
+    <Compile Include="src\engine_core\KeyInfo.cs" />
+    <Compile Include="src\engine_sessions\BtCursor.cs" />
+    <Compile Include="src\engine_core\CellInfo.cs" />
+    <Compile Include="src\engine_basis\BitVec.cs" />
+    <Compile Include="src\storage_backend\PCache.cs" />
+    <Compile Include="src\storage_backend\PGroup.cs" />
+    <Compile Include="src\storage_backend\PCache`.cs" />
+    <Compile Include="src\storage_backend\PgHdr1.cs" />
+    <Compile Include="src\storage_backend\PagerSavepoint.cs" />
+    <Compile Include="src\storage_backend\sqlite3_backup.cs" />
+    <Compile Include="src\engine_core\UnpackedRecord.cs" />
+    <Compile Include="src\parsing\expr_c.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -285,4 +330,30 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <TextStylePolicy TabWidth="8" RemoveTrailingWhitespace="False" NoTabsAfterNonTabs="True" EolMarker="Windows" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/plain" />
+          <TextStylePolicy TabWidth="8" RemoveTrailingWhitespace="False" NoTabsAfterNonTabs="True" EolMarker="Windows" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-csharp" />
+          <CSharpFormattingPolicy PropertyBraceStyle="NextLine" PropertyGetBraceStyle="NextLine" PropertySetBraceStyle="NextLine" EventBraceStyle="NextLine" EventAddBraceStyle="NextLine" EventRemoveBraceStyle="NextLine" StatementBraceStyle="NextLine" ElseNewLinePlacement="NewLine" ElseIfNewLinePlacement="NewLine" CatchNewLinePlacement="NewLine" FinallyNewLinePlacement="NewLine" WhileNewLinePlacement="NewLine" BeforeMethodDeclarationParentheses="False" BeforeMethodCallParentheses="False" BeforeConstructorDeclarationParentheses="False" NewLineBeforeConstructorInitializerColon="NewLine" NewLineAfterConstructorInitializerColon="SameLine" BeforeIndexerDeclarationBracket="False" BeforeDelegateDeclarationParentheses="False" AfterDelegateDeclarationParameterComma="True" NewParentheses="False" SpacesBeforeBrackets="False" inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
+          <TextStylePolicy TabWidth="8" RemoveTrailingWhitespace="False" NoTabsAfterNonTabs="True" EolMarker="Windows" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="application/config+xml" />
+          <XmlFormattingPolicy inheritsSet="Mono" inheritsScope="application/xml" scope="application/config+xml" />
+          <TextStylePolicy TabWidth="8" RemoveTrailingWhitespace="False" NoTabsAfterNonTabs="True" EolMarker="Windows" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="application/xml" />
+          <XmlFormattingPolicy inheritsSet="Mono" inheritsScope="application/xml" scope="application/xml" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <ItemGroup>
+    <Folder Include="src\parsing\" />
+    <Folder Include="src\engine_scheme\" />
+    <Folder Include="src\engine_core\" />
+    <Folder Include="src\engine_sessions\" />
+    <Folder Include="src\engine_vdbe\" />
+    <Folder Include="src\engine_basis\" />
+    <Folder Include="src\engine_basis\encryption\" />
+    <Folder Include="src\engine_basis\sync\" />
+    <Folder Include="src\storage_backend\" />
+  </ItemGroup>
 </Project>

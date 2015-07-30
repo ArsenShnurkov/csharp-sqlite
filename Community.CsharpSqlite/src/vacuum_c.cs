@@ -8,9 +8,9 @@ using u32 = System.UInt32;
 
 namespace Community.CsharpSqlite
 {
-  using sqlite3_stmt = Sqlite3.Vdbe;
+  using sqlite3_stmt = Vdbe;
 
-  public partial class Sqlite3
+  public partial class Globals
   {
     /*
     ** 2003 April 6

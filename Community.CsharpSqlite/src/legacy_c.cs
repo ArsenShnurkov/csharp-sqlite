@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Community.CsharpSqlite
 {
-  using sqlite3_callback = Sqlite3.dxCallback;
-  using sqlite3_stmt = Sqlite3.Vdbe;
+  using sqlite3_callback = dxCallback;
+  using sqlite3_stmt = Vdbe;
 
-  public partial class Sqlite3
+  public partial class Globals
   {
     /*
     ** 2001 September 15

@@ -7,7 +7,7 @@ using sqlite3_int64 = System.Int64;
 
 namespace Community.CsharpSqlite
 {
-	public partial class Sqlite3
+	public partial class Globals
 	{
 		/*
     ** 2005 November 29

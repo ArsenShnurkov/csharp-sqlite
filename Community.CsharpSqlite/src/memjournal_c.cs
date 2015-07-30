@@ -10,9 +10,9 @@ using u32 = System.UInt32;
 namespace Community.CsharpSqlite
 {
   using sqlite3_int64 = System.Int64;
-  using MemJournal = Sqlite3.sqlite3_file;
+  using MemJournal = Globals.sqlite3_file;
 
-  public partial class Sqlite3
+  public partial class Globals
   {
     /*
     ** 2007 August 22

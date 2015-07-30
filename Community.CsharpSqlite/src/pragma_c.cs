@@ -11,7 +11,7 @@ using System.Globalization;
 
 namespace Community.CsharpSqlite
 {
-  public partial class Sqlite3
+  public partial class Globals
   {
     /*
     ** 2003 April 6

@@ -8,9 +8,9 @@ using u16 = System.UInt16;
 
 namespace Community.CsharpSqlite
 {
-  using sqlite3_value = Sqlite3.Mem;
+  using sqlite3_value = Mem;
 
-  public partial class Sqlite3
+  public partial class Globals
   {
     /*
     ** 2005 May 23

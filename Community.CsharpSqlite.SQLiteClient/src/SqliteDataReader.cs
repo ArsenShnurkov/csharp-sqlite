@@ -58,7 +58,7 @@ namespace Community.CsharpSqlite.SQLiteClient
 
         #region Constructors and destructors
 
-        internal SqliteDataReader(SqliteCommand cmd, Sqlite3.Vdbe pVm, int version)
+        internal SqliteDataReader(SqliteCommand cmd, Globals.Vdbe pVm, int version)
         {
             command = cmd;
             rows = new List<object[]>();
@@ -112,7 +112,7 @@ namespace Community.CsharpSqlite.SQLiteClient
 
         #region Internal Methods
 
-        internal void ReadpVm(Sqlite3.Vdbe pVm, int version, SqliteCommand cmd)
+        internal void ReadpVm(Globals.Vdbe pVm, int version, SqliteCommand cmd)
         {
             int pN;
             IntPtr pazValue;
@@ -137,7 +137,7 @@ namespace Community.CsharpSqlite.SQLiteClient
                         declmode = new int[pN]; // 1 == integer, 2 == datetime
                         for (int i = 0; i < pN; i++)
                         {
-                            string decl = Sqlite3.sqlite3_column_decltype(pVm, i);
+                            string decl = Globals.sqlite3_column_decltype(pVm, i);
                             if (decl != null)
                             {
                                 decltypes[i] = decl.ToLower(
@@ -162,7 +162,7 @@ namespace Community.CsharpSqlite.SQLiteClient
                         //	IntPtr fieldPtr = Marshal.ReadIntPtr (pazColName, i*IntPtr.Size);
                         //	colName = Sqlite.HeapToString (fieldPtr, ((SqliteConnection)cmd.Connection).Encoding);
                         //} else {
-                        colName = Sqlite3.sqlite3_column_name(pVm, i);
+                        colName = Globals.sqlite3_column_name(pVm, i);
                         //}
                         columns[i] = colName;
                         column_names_sens[colName] = i;
@@ -182,10 +182,10 @@ namespace Community.CsharpSqlite.SQLiteClient
 						data_row[i] = Sqlite.HeapToString (fieldPtr, ((SqliteConnection)cmd.Connection).Encoding);
 					} else {
                     */
-                    switch (Sqlite3.sqlite3_column_type(pVm, i))
+                    switch (Globals.sqlite3_column_type(pVm, i))
                     {
                     case 1:
-                        long val = Sqlite3.sqlite3_column_int64(pVm, i);
+                        long val = Globals.sqlite3_column_int64(pVm, i);
 							
 								// If the column was declared as an 'int' or 'integer', let's play
 								// nice and return an int (version 3 only).
@@ -204,10 +204,10 @@ namespace Community.CsharpSqlite.SQLiteClient
 									
                         break;
                     case 2:
-                        data_row[i] = Sqlite3.sqlite3_column_double(pVm, i);
+                        data_row[i] = Globals.sqlite3_column_double(pVm, i);
                         break;
                     case 3:
-                        data_row[i] = Sqlite3.sqlite3_column_text(pVm, i);
+                        data_row[i] = Globals.sqlite3_column_text(pVm, i);
 								
 								// If the column was declared as a 'date' or 'datetime', let's play
 								// nice and return a DateTime (version 3 only).
@@ -219,7 +219,7 @@ namespace Community.CsharpSqlite.SQLiteClient
                         break;
                     case 4:
 								//int blobbytes = Sqlite3.sqlite3_column_bytes16 (pVm, i);
-                        byte[] blob = Sqlite3.sqlite3_column_blob(pVm, i);
+                        byte[] blob = Globals.sqlite3_column_blob(pVm, i);
 								//byte[] blob = new byte[blobbytes];
 								//Marshal.Copy (blobptr, blob, 0, blobbytes);
                         data_row[i] = blob;

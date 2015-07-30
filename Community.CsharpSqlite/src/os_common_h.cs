@@ -3,7 +3,7 @@ using va_list = System.Object;
 
 namespace Community.CsharpSqlite
 {
-  public partial class Sqlite3
+  public partial class Globals
   {
     /*
     ** 2004 May 22

@@ -6,7 +6,7 @@ using u8 = System.Byte;
 
 namespace Community.CsharpSqlite
 {
-  public partial class Sqlite3
+  public partial class Globals
   {
     /*
     ** 2006 June 10
@@ -30,19 +30,6 @@ namespace Community.CsharpSqlite
     */
 #if !SQLITE_OMIT_VIRTUALTABLE
     //#include "sqliteInt.h"
-
-    /*
-    ** Before a virtual table xCreate() or xConnect() method is invoked, the
-    ** sqlite3.pVtabCtx member variable is set to point to an instance of
-    ** this struct allocated on the stack. It is used by the implementation of 
-    ** the sqlite3_declare_vtab() and sqlite3_vtab_config() APIs, both of which
-    ** are invoked only from within xCreate and xConnect methods.
-    */
-    public class VtabCtx
-    {
-      public Table pTab;
-      public VTable pVTable;
-    };
 
     /*
     ** The actual function that does the work of creating a new module.

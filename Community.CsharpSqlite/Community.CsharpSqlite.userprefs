@@ -1,0 +1,32 @@
+﻿<Properties GitUserInfo="UsingGIT" StartupItem="Community.CsharpSqlite.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Community.CsharpSqlite" expanded="True">
+            <Node name="Community.CsharpSqlite" expanded="True">
+              <Node name="src" expanded="True">
+                <Node name="engine_core" expanded="True">
+                  <Node name="UnpackedRecord.cs" selected="True" />
+                </Node>
+                <Node name="engine_scheme" expanded="True" />
+                <Node name="engine_sessions" expanded="True" />
+                <Node name="engine_vdbe" expanded="True" />
+                <Node name="parsing" expanded="True" />
+                <Node name="storage_backend" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="Community.CsharpSqlite.SQLiteClient" expanded="True">
+              <Node name="src" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
